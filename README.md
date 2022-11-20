@@ -1,10 +1,7 @@
-# Express API Starter
+# Server git repo for Budget Ultra Deluxe
 
-How to use this template:
 
-```sh
-npx create-express-api --directory my-api-name
-```
+## Built with Express API Starter2
 
 Includes API Server utilities:
 
@@ -51,3 +48,12 @@ npm test
 ```
 npm run dev
 ```
+
+How to use this template yourself in your own projects to easily build an express API ready to deploy to Heroku or other host:
+
+```sh
+npx create-express-api --directory my-api-name
+```
+
+And I suggest this quick and dirty video with everything you need to start in 30 minutes:
+[Deploying A React, Express, MySQL Website Tutorial](https://www.youtube.com/watch?v=lwOsI8LtVEQ)
