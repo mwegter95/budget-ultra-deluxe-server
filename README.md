@@ -49,6 +49,7 @@ npm test
 npm run dev
 ```
 
+## How to use npx create-express-api
 How to use this template yourself in your own projects to easily build an express API ready to deploy to Heroku or other host:
 
 ```sh
