@@ -12,6 +12,15 @@ module.exports = appInfo => {
    **/
   const config = exports = {};
 
+  // add sequelize config for the Egg app
+  config.sequelize =
+    {database: "heroku_a574ae5dace3e6d",
+    username: "b54f28c51b7b1f",
+    password: "c40b497f",
+      dialect: "mysql",
+      host: "us-cdbr-east-06.cleardb.net",
+    };
+
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1669523617538_9189';
 
