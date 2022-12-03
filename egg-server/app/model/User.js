@@ -1,28 +1,30 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, INTEGER, DATE, TEXT } = app.sequelize;
+  const { STRING, DATE, TEXT } = app.Sequelize;
   const User = app.model.define('user', 
     {
-      first_name: DataTypes.STRING(30),
-      last_name: DataTypes.STRING(30),
+      first_name: STRING(30),
+      last_name: STRING(30),
       budgets: {
-        type: DataTypes.TEXT,
+        type: TEXT,
         get: function () {
-          return JSON.parse(this.getDataValue("value"));
+          if (this.getDataValue("value") !== undefined) {
+            try {
+              return JSON.parse(this.getDataValue("value"));
+            } catch(error) {
+              throw new Error(error)
+            };
+          }
         },
         set: function (value) {
           this.setDataValue("value", JSON.stringify(value));
         },
       },
-      email: DataTypes.STRING(100),
-      created_at: DataTypes.DATE,
-      updated_at: DataTypes.DATE,
-    },
-    {
-      sequelize,
-      modelName: "budget",
-    }
-  );
-  return budget;
+      email: STRING(100),
+      created_at: DATE,
+      updated_at: DATE,
+    });
+
+  return User;
 };

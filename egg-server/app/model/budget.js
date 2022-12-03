@@ -1,28 +1,18 @@
 'use strict';
-const { 
-  Model
-} = require('sequelize');
-module.exports = (app, DataTypes) => {
-  class budget extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  budget.init({
-    id: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    owner_id: DataTypes.INTEGER,
-    co_owner_id: DataTypes.INTEGER,
-    year: DataTypes.INTEGER,
-    month: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'budget',
+
+module.exports = app => {
+  const { STRING, INTEGER } = app.Sequelize;
+
+  const Budget = app.model.define('budget', {
+    title: STRING,
+    co_owner_id: INTEGER,
+    year: INTEGER,
+    month: INTEGER
   });
-  return budget;
+
+  Budget.associate = function() {
+    app.model.Budget.belongsTo(app.model.User, { as: 'owner_id', foreignKey: 'id'});
+  };
+
+  return Budget;
 };

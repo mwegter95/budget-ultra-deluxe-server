@@ -27,10 +27,18 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  config.security = {
+    xframe: {
+      value: 'SAMEORIGIN'
+    },
+    domainWhiteList: ['http://localhost:7001']
+  }
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
   };
+
 
   return {
     ...config,
